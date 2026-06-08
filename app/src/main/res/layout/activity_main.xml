@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="POS-VENTA" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PRODUCTOS DISPONIBLES" />
+
+    <TableLayout
+        android:id="@+id/tablaProductos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1">
+
+        <TableRow android:background="#2b61b3">
+            <TextView
+                android:gravity="center"
+                android:text="Producto"
+                android:textColor="@android:color/white" />
+            <TextView
+                android:gravity="center"
+                android:text="Precio Unit."
+                android:textColor="@android:color/white" />
+            <TextView
+                android:gravity="center"
+                android:text="Agregar"
+                android:textColor="@android:color/white" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:padding="3dip"
+                android:text="Producto 1 (Agua)" />
+            <TextView
+                android:padding="3dip"
+                android:gravity="center"
+                android:text="$ 2" />
+            <Button
+                android:id="@+id/button1"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="2dp"
+                android:layout_margin="3dp"
+                android:text="+" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:padding="3dip"
+                android:text="Producto 2 (Gaseosa)" />
+            <TextView
+                android:padding="3dip"
+                android:gravity="center"
+                android:text="$ 3.50" />
+            <Button
+                android:id="@+id/button2"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="2dp"
+                android:layout_margin="3dp"
+                android:text="+" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:padding="3dip"
+                android:text="Producto 3 (Galletas)" />
+            <TextView
+                android:padding="3dip"
+                android:gravity="center"
+                android:text="$ 1.50" />
+            <Button
+                android:id="@+id/button3"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="2dp"
+                android:layout_margin="3dp"
+                android:text="+" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="DETALLE DE VENTA" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:stretchColumns="1,2,3,4"
+        android:id="@+id/tablaDetalles">
+
+        <TableRow android:background="#0b6d99">
+            <TextView
+                android:layout_column="0"
+                android:padding="3dip"
+                android:gravity="center"
+                android:text="#"
+                android:textColor="@android:color/white" />
+            <TextView
+                android:padding="3dip"
+                android:gravity="center"
+                android:layout_column="1"
+                android:text="Producto"
+                android:textColor="@android:color/white" />
+            <TextView
+                android:padding="3dip"
+                android:gravity="center"
+                android:layout_column="2"
+                android:text="Precio Unit."
+                android:textColor="@android:color/white" />
+            <TextView
+                android:padding="3dip"
+                android:gravity="center"
+                android:layout_column="3"
+                android:text="Cantidad"
+                android:textColor="@android:color/white" />
+            <TextView
+                android:padding="3dip"
+                android:gravity="center"
+                android:layout_column="4"
+                android:text="Subtotal"
+                android:textColor="@android:color/white" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/botonFacturar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FACTURAR"/>
+
+</LinearLayout>
