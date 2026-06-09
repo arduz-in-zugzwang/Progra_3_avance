@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/InboxFragment"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="Inbox"/>
+
+    <item
+        android:id="@+id/SentFragment"
+        android:icon="@android:drawable/ic_menu_send"
+        android:title="Sent"/>
+
+    <item
+        android:id="@+id/HelpFragment"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="Help"/>
+
+</menu>
