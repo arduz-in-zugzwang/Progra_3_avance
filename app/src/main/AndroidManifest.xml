@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PrograIII">
         <activity
+            android:name=".ResultadosActivity"
+            android:exported="false" />
+        <activity
             android:name=".NotaActivity"
             android:exported="false" />
         <activity
