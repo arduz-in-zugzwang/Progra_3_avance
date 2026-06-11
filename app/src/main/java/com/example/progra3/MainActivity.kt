@@ -8,61 +8,61 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.onNavDestinationSelected
-import androidx.navigation.ui.setupWithNavController
+//import androidx.navigation.findNavController
+//import androidx.navigation.fragment.NavHostFragment
+//import androidx.navigation.ui.AppBarConfiguration
+//import androidx.navigation.ui.NavigationUI
+//import androidx.navigation.ui.onNavDestinationSelected
+//import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.updatePadding
+//dados
+import android.widget.Button
+import android.widget.ImageView
 
+
+/**
+ * DiceRoller demonstrates simple interactivity in an Android app.
+ * It contains one button that updates a text view with a random
+ * value between 1 and 6.
+ */
 class MainActivity : AppCompatActivity() {
+    private lateinit var diceImage: ImageView
+    private var randomInt: Int? = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
+        diceImage = findViewById(R.id.dice_image)
 
-        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        // Get the Button view from the layout and assign a click
+        // listener to it.
+        val rollButton: Button = findViewById(R.id.roll_button)
+        rollButton.setOnClickListener { rollDice() }
+    }
 
-        ViewCompat.setOnApplyWindowInsetsListener(drawer) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            toolbar.updatePadding(top = systemBars.top)
-            toolbar.layoutParams.height = resources.getDimensionPixelSize(
-                com.google.android.material.R.dimen.m3_appbar_size_compact
-            ) + systemBars.top
-            insets
+    /**
+     * Click listener for the Roll button.
+     */
+    private fun rollDice() {
+
+        this.randomInt = (1..6).random()
+
+        //val diceImage: ImageView = findViewById(R.id.dice_image)
+        val drawableResource = when (randomInt) {
+            1 -> R.drawable.cara_1
+            2 -> R.drawable.cara_2
+            3 -> R.drawable.cara_3
+            4 -> R.drawable.cara_4
+            5 -> R.drawable.cara_5
+            else -> R.drawable.cara_6
         }
+        this.diceImage.setImageResource(drawableResource)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-
-        val navView = findViewById<NavigationView>(R.id.nav_view)
-        NavigationUI.setupWithNavController(navView,navController)
-//        ViewCompat.setOnApplyWindowInsetsListener(navView) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.updatePadding(top = systemBars.top)
-//            insets
-//        }
-
-        val builder = AppBarConfiguration.Builder(navController.graph)
-        builder.setOpenableLayout(drawer)
-
-        val appBarConfiguration = builder.build()
-        toolbar.setupWithNavController(navController, appBarConfiguration)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_toolbar,menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val navController=findNavController(R.id.nav_host_fragment)
-        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+        diceImage.animate()
+            .rotationBy(360f)
+            .setDuration(500)
+            .start()
     }
 }
