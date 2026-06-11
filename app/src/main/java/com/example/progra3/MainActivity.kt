@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val toolbar = findViewById<MaterialToolbar>(R.id.materialToolbar)
+        setSupportActionBar(toolbar)
         diceImage = findViewById(R.id.dado1)
         diceImage2 = findViewById(R.id.dado2)
 
