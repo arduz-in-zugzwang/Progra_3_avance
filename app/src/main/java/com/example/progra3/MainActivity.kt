@@ -30,11 +30,13 @@ import android.widget.ImageView
  */
 class MainActivity : AppCompatActivity() {
     private lateinit var diceImage: ImageView
+    private lateinit var diceImage2: ImageView
     private var randomInt: Int? = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        diceImage = findViewById(R.id.dice_image)
+        diceImage = findViewById(R.id.dado1)
+        diceImage2 = findViewById(R.id.dado2)
 
         // Get the Button view from the layout and assign a click
         // listener to it.
@@ -45,12 +47,14 @@ class MainActivity : AppCompatActivity() {
     /**
      * Click listener for the Roll button.
      */
+//    21, 66, 55, 44, 33, 22, 11, 65, 64, 63, 62, 61, 54, 53, 52, 51, 43, 42, 41, 32, 31.
     private fun rollDice() {
-
-        this.randomInt = (1..6).random()
-
-        //val diceImage: ImageView = findViewById(R.id.dice_image)
-        val drawableResource = when (randomInt) {
+        rollSingleDice(diceImage)
+        rollSingleDice(diceImage2)
+    }
+    private fun rollSingleDice(diceImageView: ImageView) {
+        val result = (1..6).random()
+        val drawable = when (result) {
             1 -> R.drawable.cara_1
             2 -> R.drawable.cara_2
             3 -> R.drawable.cara_3
@@ -58,11 +62,7 @@ class MainActivity : AppCompatActivity() {
             5 -> R.drawable.cara_5
             else -> R.drawable.cara_6
         }
-        this.diceImage.setImageResource(drawableResource)
-
-        diceImage.animate()
-            .rotationBy(360f)
-            .setDuration(500)
-            .start()
+        diceImageView.setImageResource(drawable)
+        diceImageView.animate().rotationBy(360f).setDuration(500).start()
     }
 }
